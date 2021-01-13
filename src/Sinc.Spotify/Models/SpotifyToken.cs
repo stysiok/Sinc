@@ -1,3 +1,5 @@
+using System;
+
 namespace Sinc.Spotify.Models
 {
     public class SpotifyToken
@@ -7,6 +9,8 @@ namespace Sinc.Spotify.Models
         public int ExpiresIn { get; set; }
         public string RefreshToken { get; set; }
         public string Scope { get; set; }
+        public DateTime EvaluatedTime { get; set; }
+        public bool IsActive => DateTime.Now.AddMinutes(-1) < EvaluatedTime.AddSeconds(ExpiresIn);
         
     }
 }

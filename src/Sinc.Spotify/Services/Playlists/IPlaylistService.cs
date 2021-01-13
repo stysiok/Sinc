@@ -1,6 +1,6 @@
 using Sinc.Spotify.Models;
 
-namespace Sinc.Spotify.Playlists
+namespace Sinc.Spotify.Services.Playlists
 {
     public interface IPlaylistService
     {

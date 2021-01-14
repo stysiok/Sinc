@@ -19,11 +19,11 @@ namespace Sinc.Spotify.Services.SpotifyAPI
 
         public async Task<T> GetAsync<T>(string location)
         {
-            var token = _spotifyAuthorization.GetToken();
+            var token = await _spotifyAuthorization.GetTokenAsync();
             using (var client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Authorization =
-                    new AuthenticationHeaderValue(_spotifyOptions.TokenType, token);
+                    new AuthenticationHeaderValue(token.TokenType, token.Token);
 
                 var uri = $"{_spotifyOptions.ApiUrl}{location}";
                 var response = await client.GetAsync(uri);

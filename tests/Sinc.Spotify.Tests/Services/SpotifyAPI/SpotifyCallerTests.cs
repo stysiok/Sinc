@@ -1,3 +1,5 @@
+using Xunit;
+
 namespace Sinc.Spotify.Tests.Services.SpotifyAPI
 {
     public class SpotifyCallerTests

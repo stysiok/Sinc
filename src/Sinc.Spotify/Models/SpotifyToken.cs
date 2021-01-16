@@ -1,4 +1,5 @@
 using System;
+using Newtonsoft.Json;
 
 namespace Sinc.Spotify.Models
 {
@@ -12,12 +13,13 @@ namespace Sinc.Spotify.Models
         public DateTime ValidUntil { get; private set; }
         public bool IsActive => DateTime.Now.AddMinutes(-1) < ValidUntil;
 
-        public SpotifyToken(string accessToken, string tokenType, int expiresIn, string refreshToken, string scope)
+        [JsonConstructor]
+        public SpotifyToken(string access_token, string token_type, int expires_in, string refresh_token, string scope)
         {
-            AccessToken = accessToken;
-            TokenType = tokenType;
-            ExpiresIn = expiresIn;
-            RefreshToken = refreshToken;
+            AccessToken = access_token;
+            TokenType = token_type;
+            ExpiresIn = expires_in;
+            RefreshToken = refresh_token;
             Scope = scope;
             ValidUntil = DateTime.Now.AddSeconds(ExpiresIn);
         }
@@ -32,6 +34,6 @@ namespace Sinc.Spotify.Models
             Scope = spotifyOptions.DefaultScope;
             ValidUntil = DateTime.Now.AddSeconds(ExpiresIn);
         }
-        
+
     }
 }

@@ -3,6 +3,7 @@ using System.IO;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Sinc.Spotify;
+using Sinc.Spotify.Services.SpotifyAPI;
 
 namespace Sinc.Main
 {
@@ -11,12 +12,17 @@ namespace Sinc.Main
         static void Main(string[] args)
         {
             var configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetParent(AppContext.BaseDirectory).FullName)
+                .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", false)
                 .Build();
                 
-            var serviceCollection = new ServiceCollection()
-                .UseSpotify(configuration);
+            var serviceProvider = new ServiceCollection()
+                .UseSpotify(configuration)
+                .BuildServiceProvider();
+
+            var spotifyCaller = serviceProvider.GetService<ISpotifyCaller>();
+
+            string data = spotifyCaller.GetAsync<string>("me/playlists").Result;
         }
     }
 }

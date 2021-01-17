@@ -3,6 +3,7 @@ using System.IO;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Sinc.Spotify;
+using Sinc.Spotify.Models;
 using Sinc.Spotify.Services.SpotifyAPI;
 
 namespace Sinc.Main
@@ -22,7 +23,7 @@ namespace Sinc.Main
 
             var spotifyCaller = serviceProvider.GetService<ISpotifyCaller>();
 
-            string data = spotifyCaller.GetAsync<string>("me/playlists").Result;
+            var data = spotifyCaller.GetAsync<SpotifyPlaylist>("me/playlists").Result;
         }
     }
 }

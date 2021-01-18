@@ -1,9 +1,7 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Sinc.Spotify;
-using Sinc.Spotify.Models;
 using Sinc.Spotify.Services.SpotifyAPI;
 
 namespace Sinc.Main

@@ -5,6 +5,6 @@ namespace Sinc.Spotify.Services.SpotifyAPI
 {
     public interface ISpotifyCaller 
     {
-        Task<IEnumerable<T>> GetAsync<T>(string location);
+        Task<IEnumerable<T>> GetAsync<T>(string location, bool fullLocationProvided = false);
     }
 }

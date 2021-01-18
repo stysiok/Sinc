@@ -20,7 +20,7 @@ namespace Sinc.Spotify.Services.SpotifyAPI
             _spotifyOptions = spotifyOptions.Value;
         }
 
-        public async Task<IEnumerable<T>> GetAsync<T>(string location)
+        public async Task<IEnumerable<T>> GetAsync<T>(string location, bool fullPathProvided = false)
         {
             var token = await _spotifyAuthorization.GetTokenAsync();
             using (var client = new HttpClient())
@@ -28,7 +28,7 @@ namespace Sinc.Spotify.Services.SpotifyAPI
                 client.DefaultRequestHeaders.Authorization =
                     new AuthenticationHeaderValue(token.TokenType, token.Token);
 
-                var uri = $"{_spotifyOptions.ApiUrl}/{location}";
+                var uri = fullPathProvided ? location : $"{_spotifyOptions.ApiUrl}/{location}";
                 var response = await client.GetAsync(uri);
 
                 response.EnsureSuccessStatusCode();

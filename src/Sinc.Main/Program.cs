@@ -17,11 +17,12 @@ namespace Sinc.Main
                 
             var serviceProvider = new ServiceCollection()
                 .UseSpotify(configuration)
+                .UseSinc(configuration)
                 .BuildServiceProvider();
 
-            var spotifyCaller = serviceProvider.GetService<ISpotifyCaller>();
+            var spotifyCaller = serviceProvider.GetService<SincPlaylists>();
 
-            var data = spotifyCaller.GetAsync<SpotifyPlaylist>("me/playlists").Result;
+            spotifyCaller.Run().Wait();
         }
     }
 }

@@ -5,11 +5,11 @@ using Sinc.Spotify.Services.SpotifyAPI;
 
 namespace Sinc.Spotify.Services.Songs
 {
-    public class SpotifySongService : ISpotifySongsService
+    public class SpotifySongsService : ISpotifySongsService
     {
         private ISpotifyCaller _caller { get; set; }
 
-        public SpotifySongService(ISpotifyCaller caller)
+        public SpotifySongsService(ISpotifyCaller caller)
         {
             _caller = caller;
         }

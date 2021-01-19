@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
+using Sinc.Spotify.Models;
 
 namespace Sinc.Spotify
 {
@@ -11,5 +13,6 @@ namespace Sinc.Spotify
         public string SpotifyId { get; set; }
         [JsonProperty("tracks.href")]
         public string TracksURL { get; set; }
+        public IEnumerable<SpotifySong> Songs { get; set; }
     }
 }

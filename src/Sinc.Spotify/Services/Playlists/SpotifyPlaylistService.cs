@@ -16,7 +16,7 @@ namespace Sinc.Spotify.Services.Playlists
         public async Task<SpotifyPlaylist> GetSpotifyPlaylist(string nameOfPlaylist)
         {
             var result = await _caller.GetAsync<SpotifyPlaylist>("me/playlists");
-            return result.FirstOrDefault(p => p.Name == nameOfPlaylist);
+            return result.items.FirstOrDefault(p => p.Name == nameOfPlaylist);
         }
         
     }

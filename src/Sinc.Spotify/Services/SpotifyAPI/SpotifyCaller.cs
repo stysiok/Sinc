@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Sinc.Spotify.Models;
+using Sinc.Spotify.Models.DTOs;
 
 namespace Sinc.Spotify.Services.SpotifyAPI
 {
@@ -20,7 +21,7 @@ namespace Sinc.Spotify.Services.SpotifyAPI
             _spotifyOptions = spotifyOptions.Value;
         }
 
-        public async Task<IEnumerable<T>> GetAsync<T>(string location, bool fullPathProvided = false)
+        public async Task<SpotifyResponse<T>> GetAsync<T>(string location, bool fullPathProvided = false)
         {
             var token = await _spotifyAuthorization.GetTokenAsync();
             using (var client = new HttpClient())
@@ -35,21 +36,10 @@ namespace Sinc.Spotify.Services.SpotifyAPI
 
                 var content = await response.Content.ReadAsStringAsync();
 
-                var data = JsonConvert.DeserializeObject<SpotifyResponse<T>>(content).items;
+                var data = JsonConvert.DeserializeObject<SpotifyResponse<T>>(content);
 
                 return data;
             }
         }
-    }
-    
-    public class SpotifyResponse<T>
-    {
-        public string href { get; set; } 
-        public List<T> items { get; set; } 
-        public int limit { get; set; } 
-        public string next { get; set; } 
-        public int offset { get; set; } 
-        public string previous { get; set; } 
-        public int total { get; set; }
     }
 }

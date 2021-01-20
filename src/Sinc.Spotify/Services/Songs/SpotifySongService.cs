@@ -13,7 +13,17 @@ namespace Sinc.Spotify.Services.Songs
         {
             _caller = caller;
         }
-        public async Task<IEnumerable<SpotifySong>> GetSongsOnPlaylist(string songsUrl) 
-            => await _caller.GetAsync<SpotifySong>(songsUrl, true);
+        public async Task<IEnumerable<SpotifySong>> GetSongsOnPlaylist(string songsUrl)
+        {
+            var result = await _caller.GetAsync<SpotifySong>(songsUrl, true);
+            var songs = result.items;
+            
+            if(string.IsNullOrEmpty(result.next)) return songs;
+
+            foreach(var song in await GetSongsOnPlaylist(result.next))
+                songs.Add(song);
+            
+            return songs;
+        }
     }
 }

@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Sinc.Spotify\Sinc.Spotify.csproj" />
+    <ProjectReference Include="..\Sinc.Storage\Sinc.Storage.csproj" />
   </ItemGroup>
 
 </Project>

@@ -2,7 +2,6 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Sinc.Spotify;
-using Sinc.Spotify.Services.SpotifyAPI;
 
 namespace Sinc.Main
 {
@@ -17,6 +16,7 @@ namespace Sinc.Main
                 
             var serviceProvider = new ServiceCollection()
                 .UseSpotify(configuration)
+                .UseStorage(configuration)
                 .UseSinc(configuration)
                 .BuildServiceProvider();
 

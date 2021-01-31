@@ -23,6 +23,7 @@ namespace Sinc.Main
         {
             var spotifyData = await _spotify.GetSpotifyPlaylistWithSongs(_sincOptions.PlaylistToSync);
             var storage = _storage.GetStoredPlaylist(_sincOptions.PlaylistToSync);
+            
             return;
         }
     }

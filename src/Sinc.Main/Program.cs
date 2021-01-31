@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Sinc.Spotify;
+using Sinc.Storage;
 
 namespace Sinc.Main
 {

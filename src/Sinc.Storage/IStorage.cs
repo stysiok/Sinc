@@ -1,9 +1,10 @@
+using System.Threading.Tasks;
 using Sinc.Storage.Models;
 
 namespace Sinc.Storage
 {
     public interface IStorage
     {
-        StoredPlaylist GetStoredPlaylist(string name);
+        Task<StoredPlaylist> GetStoredPlaylist(string name);
     }
 }

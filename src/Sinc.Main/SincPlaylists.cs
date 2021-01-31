@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
 using Sinc.Main.Config;
@@ -22,7 +23,9 @@ namespace Sinc.Main
         public async Task Run()
         {
             var spotifyData = await _spotify.GetSpotifyPlaylistWithSongs(_sincOptions.PlaylistToSync);
-            var storage = _storage.GetStoredPlaylist(_sincOptions.PlaylistToSync);
+            var storage = await _storage.GetStoredPlaylist(_sincOptions.PlaylistToSync);
+
+            // var unsynced = spotifyData.Songs.Where(s => )
             
             return;
         }

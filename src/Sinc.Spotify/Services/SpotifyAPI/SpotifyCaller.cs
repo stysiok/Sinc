@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -36,9 +37,7 @@ namespace Sinc.Spotify.Services.SpotifyAPI
 
                 var content = await response.Content.ReadAsStringAsync();
 
-                var data = JsonConvert.DeserializeObject<SpotifyResponse<T>>(content);
-
-                return data;
+                return JsonConvert.DeserializeObject<SpotifyResponse<T>>(content);
             }
         }
     }

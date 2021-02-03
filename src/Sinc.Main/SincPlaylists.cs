@@ -25,8 +25,13 @@ namespace Sinc.Main
             var spotifyData = await _spotify.GetSpotifyPlaylistWithSongs(_sincOptions.PlaylistToSync);
             var storage = await _storage.GetStoredPlaylist(_sincOptions.PlaylistToSync);
 
-            // var unsynced = spotifyData.Songs.Where(s => )
+            var unsynced = spotifyData.Songs.Where(s => storage.StoredSongs.Any(ss => ss.SpotifyId == s.SpotifyId));
+            //sync with yt
             
+            //sync with applemusic
+            
+            //save
+
             return;
         }
     }

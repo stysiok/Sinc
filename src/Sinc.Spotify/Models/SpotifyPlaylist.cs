@@ -13,6 +13,6 @@ namespace Sinc.Spotify
         public string SpotifyId { get; set; }
         [JsonProperty("tracks.href")]
         public string TracksURL { get; set; }
-        public IEnumerable<Song> Songs { get; set; }
+        public IEnumerable<SpotifySong> Songs { get; set; }
     }
 }

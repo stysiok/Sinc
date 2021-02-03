@@ -6,6 +6,6 @@ namespace Sinc.Spotify.Services.Songs
 {
     public interface ISpotifySongsService 
     {
-        Task<IEnumerable<Song>> GetSongsOnPlaylist(string songsUrl);
+        Task<IEnumerable<SpotifySong>> GetSongsOnPlaylist(string songsUrl);
     }
 }

@@ -4,15 +4,15 @@ using Sinc.Spotify.Models.DTOs;
 
 namespace Sinc.Spotify.Models
 {
-    public class Song
+    public class SpotifySong
     {
-        public string Id { get; set; }
+        public string SpotifyId { get; set; }
         public string Artist { get; set; }
         public string Title { get; set; }
 
-        public Song(SpotifySongDto track)
+        public SpotifySong(SpotifySongDto track)
         {
-            Id = track.id;
+            SpotifyId = track.id;
             Artist = track.artists.First().name;
             Title = track.name;
         }

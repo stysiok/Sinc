@@ -18,7 +18,7 @@ namespace Sinc.Spotify.Services.Songs
         
         public async Task<IEnumerable<Song>> GetSongsOnPlaylist(string songsUrl)
         {
-            var result = await _caller.GetAsync<Track>(songsUrl, true);
+            var result = await _caller.GetAsync<SpotifySongDto>(songsUrl, true);
             var songs = result.items.Select(t => new Song(t)).ToList();
             
             if(string.IsNullOrEmpty(result.next)) return songs;

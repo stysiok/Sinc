@@ -10,11 +10,11 @@ namespace Sinc.Spotify.Models
         public string Artist { get; set; }
         public string Title { get; set; }
 
-        public Song(Track track)
+        public Song(SpotifySongDto track)
         {
             Id = track.id;
-            // Artist = track.artists.First().name;
-            // Title = track.name;
+            Artist = track.artists.First().name;
+            Title = track.name;
         }
     }
 }
